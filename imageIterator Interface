@@ -1,6 +1,9 @@
 /**iterator interface
 *@author Douglas
 */
+
+//import for image class
+import java.awt.*;
 public interface ImageIterator{
 
 	//checks to see if imagelist has more images
