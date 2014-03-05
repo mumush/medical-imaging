@@ -6,21 +6,22 @@
  * @author dsw3144
  *
  */
+//import for the BufferedImage
+import java.awt.*;
 public class concreteImage implements Image {
 
 	private String add;
 	
 	public concreteImage(String address) {
-		// TODO Auto-generated constructor stub
+		
 		add=address;
 	}
 
 	@Override
 	public Image displayImage() {
-		// be sure to add the actual loading of the image to return @null
-		return null;
+		BufferedImage image=ImageIO.read(new File(add));
 		
-		// TODO Auto-generated method stub
+		return image;
 		
 	}
 	
