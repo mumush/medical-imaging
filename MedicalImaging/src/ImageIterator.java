@@ -10,13 +10,13 @@ public interface ImageIterator{
 	public boolean hasNext();
 
 	//goes to next image
-	public Image next();
+	public int next();
 
 	//checks to see if imagelist has previous images
 	public boolean hasPrevious();
 
 	//goes to previous image
-	public Image previous();
+	public int previous();
 
 	//checks to see if imagelist has 4 more images
 	public boolean has4Next();
@@ -25,9 +25,9 @@ public interface ImageIterator{
 	public boolean has4Previous();
 
 	//goes to next 4 images
-	public Image next4();
+	public int next4();
 
 	//goes to previous 4 images
-	public Image previous4();
+	public int previous4();
 
 }
