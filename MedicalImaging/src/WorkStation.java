@@ -147,7 +147,7 @@ public class Workstation {
 		jf.setTitle("Medical Image Workstation");
 		
 		//set the size of the frame
-		jf.setSize(1100, 500);
+		jf.setSize(650, 800);
 		
 		//set close operation
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
