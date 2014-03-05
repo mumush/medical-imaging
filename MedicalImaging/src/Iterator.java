@@ -48,8 +48,10 @@ public class Iterator implements ImageIterator{
 
 	//override has4Next()
 	public boolean has4Next(){
-		//test position without changing position
-		int test=position+4;
+		/*test position without changing position
+		*testing 7 forward since four forward just checks for the existance of the top
+		*left image, so we need to make sure we can display the next four*/
+		int test=position+7;
 
 		if(test<images.size()){
 			return true;
