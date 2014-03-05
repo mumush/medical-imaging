@@ -75,42 +75,42 @@ public class Iterator implements ImageIterator{
 	}
 
 	//override next()
-	public Image next(){
+	public int next(){
 		if(hasNext()){
-			return images.get(position+1);
+			return position++;
 		}
 		else{
-			return images.get(position);
+			return position;
 		}
 	}
 
 	//override next4()
-	public Image next4(){
+	public int next4(){
 		if(hasNext4()){
-			return images.get(position+4);
+			return position+4;
 		}
 		else{
-			return images.get(position);
+			return position;
 		}
 	}
 
 	//override previous()
-	public Image previous(){
+	public int previous(){
 		if(hasPrevious()){
-			return images.get(position-1);
+			return position-1;
 		}
 		else{
-			return images.get(position);	
+			return position;	
 		}
 	}
 
 	//override previous4()
-	public Image previous4(){
+	public int previous4(){
 		if(hasPrevious4()){
-			return images.get(position-4);
+			return position-4;
 		}
 		else{
-			return images.get(position);	
+			return position;	
 		}
 	}
 }
