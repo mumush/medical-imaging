@@ -33,7 +33,7 @@ public class Workstation {
 		jf = new JFrame();
 		
 		//set the layout for jf to be a border layout
-		jf.setLayout(new GridLayout(2, 2));
+		jf.setLayout(new GridLayout(2, 0));
 		
 		//create new JMenuBar
 		JMenuBar jmb = new JMenuBar();
@@ -89,7 +89,7 @@ public class Workstation {
 		jf.setJMenuBar(jmb);
       
       //first row in grid layout
-      JPanel rowOne = new JPanel();
+      JPanel rowOne = new JPanel(new GridLayout(2, 2));
       
       //create new image and image label
       ImageIcon image = new ImageIcon("../studies/axial_head_mri/head01.jpg");
@@ -97,31 +97,35 @@ public class Workstation {
       
       rowOne.add(label);
       
+      //create new image and image label
       ImageIcon image1 = new ImageIcon("../studies/axial_head_mri/head01.jpg");
       JLabel label1 = new JLabel("", image1, JLabel.CENTER);
       
       rowOne.add(label1);
       
+      //create new image and image label
       ImageIcon image2 = new ImageIcon("../studies/axial_head_mri/head01.jpg");
       JLabel label2 = new JLabel("", image2, JLabel.CENTER);
       
       rowOne.add(label2);
       
+      //create new image and image label
       ImageIcon image3 = new ImageIcon("../studies/axial_head_mri/head01.jpg");
       JLabel label3 = new JLabel("", image3, JLabel.CENTER);
       
       rowOne.add(label3);
       
+      
       //add row to JFrame
       jf.add(rowOne);
       
-      JPanel rowThree = new JPanel();
+      JPanel rowTwo = new JPanel();
       
       previousButton = new JButton("Previous Image");
       forwardButton = new JButton("Next Image");
       
-      rowThree.add(previousButton);
-      rowThree.add(forwardButton);
+      rowTwo.add(previousButton);
+      rowTwo.add(forwardButton);
       
       oneView = new JRadioButton("Single Image View");
       oneView.setSelected(true);
@@ -131,10 +135,10 @@ public class Workstation {
       viewButtonGroup.add(oneView);
       viewButtonGroup.add(fourView);
       
-      rowThree.add(oneView);
-      rowThree.add(fourView);
+      rowTwo.add(oneView);
+      rowTwo.add(fourView);
       
-      jf.add(rowThree);
+      jf.add(rowTwo);
       
       
 		//******JFrame setup
