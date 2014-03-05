@@ -12,7 +12,7 @@ import java.util.Observable;
  * @author John
  *
  */
-public class RemoteStation implements GUI {
+public class RemoteStation implements UI {
 
 	/* (non-Javadoc)
 	 * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
