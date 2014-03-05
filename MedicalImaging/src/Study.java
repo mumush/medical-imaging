@@ -1,7 +1,7 @@
 /*interface for the study classes
  * @author team3*/
 import java.util.Observable;
-public interface Study implements Observable {	
+public interface Study extends Observable {	
 	final int min=1;
 	final int max=4;
 	
