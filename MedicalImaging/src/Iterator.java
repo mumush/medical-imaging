@@ -3,19 +3,19 @@
 */
 
 //import library's for arrayList and Image
-import java.util.List;
+import java.util.arrayList;
 import java.awt.*;
 
 public class Iterator implements ImageIterator{
 
 	/*attributes of the class iterator
 	has a list of images and the current position in the list*/
-	private List<Image> images;
+	private arrayList<Image> images;
 	private int position;
 
 	/* constructor takes in the image list from study and the current
 	position attribut and uses them to build the iterator*/
-	public Iterator(List<Image> list,int current){
+	public Iterator(arrayList<Image> list,int current){
 		this.images=list;
 		this.position=current;
 	}
@@ -76,29 +76,41 @@ public class Iterator implements ImageIterator{
 
 	//override next()
 	public Image next(){
-		position++;
-
-		return images.get(position);
+		if(hasNext()){
+			return images.get(position+1);
+		}
+		else{
+			return images.get(position);
+		}
 	}
 
 	//override next4()
 	public Image next4(){
-		position=position+4;
-
-		return images.get(position);
+		if(hasNext4()){
+			return images.get(position+4);
+		}
+		else{
+			return images.get(position);
+		}
 	}
 
 	//override previous()
 	public Image previous(){
-		position=position-1;
-
-		return images.get(position);
+		if(hasPrevious()){
+			return images.get(position-1);
+		}
+		else{
+			return images.get(position);	
+		}
 	}
 
 	//override previous4()
 	public Image previous4(){
-		position=position-4;
-
-		return images.get(position);
+		if(hasPrevious4()){
+			return images.get(position-4);
+		}
+		else{
+			return images.get(position);	
+		}
 	}
 }
