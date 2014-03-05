@@ -3,19 +3,19 @@
 */
 
 //import library's for arrayList and Image
-import java.util.arrayList;
+import java.util.ArrayList;
 import java.awt.*;
 
 public class Iterator implements ImageIterator{
 
 	/*attributes of the class iterator
 	has a list of images and the current position in the list*/
-	private arrayList<Image> images;
+	private ArrayList<Image> images;
 	private int position;
 
 	/* constructor takes in the image list from study and the current
 	position attribut and uses them to build the iterator*/
-	public Iterator(arrayList<Image> list,int current){
+	public Iterator(ArrayList<Image> list,int current){
 		this.images=list;
 		this.position=current;
 	}
