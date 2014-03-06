@@ -64,10 +64,10 @@ public class localStudy extends Observable implements Study {
 		{
          		FileOutputStream fileOut = new FileOutputStream(directory+".ser");
          		ObjectOutputStream out = new ObjectOutputStream(fileOut);
-         		out.writeObject(self);
+         		out.writeObject(this);
          		out.close();
         	 	fileOut.close();
-        	 	System.out.printf("Serialized data is saved in /tmp/employee.ser");
+        	 	System.out.printf("Serialized data is saved");
 		}
 		catch(IOException i)
       		{
