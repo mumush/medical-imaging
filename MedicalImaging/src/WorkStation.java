@@ -12,7 +12,6 @@ public class Workstation {
 
 	JFrame jf;
    JMenuItem openItem;
-	JMenuItem aboutItem;
    JMenuItem copyItem;
    JMenuItem saveItem;
    JMenuItem exitItem;
@@ -146,6 +145,9 @@ public class Workstation {
 		controlListener ctrlListener = new controlListener(this);
 		
 		openItem.addActionListener(ctrlListener);
+      copyItem.addActionListener(ctrlListener);
+      saveItem.addActionListener(ctrlListener);
+      optionsItem.addActionListener(ctrlListener);
       
       
 		//******JFrame setup
