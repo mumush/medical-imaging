@@ -29,27 +29,30 @@ public class RunWorkstation extends Applet{
 	public void init() {
 		
 		station=new WorkStation();
-		try{
-			FileInputStream fileIn = new FileInputStream(new File(System.getProperty("user.dir")+"/studies/.ser"));
-			ObjectInputStream in = new ObjectInputStream(fileIn);
-			study = (localStudy) in.readObject();
-			in.close();
-			fileIn.close();
-			list.add(study);
-			
-		}
-		 catch (ClassNotFoundException e) {
-			
-			System.out.println("Bad things happend");
-			e.printStackTrace();
-		}
-		 catch(Exception e){
-			e.printStackTrace();
-		}
 		for(File child: file.listFiles()){
-			study = new localStudy(child.getAbsolutePath());
-			list.add(study);
+			try{
+				FileInputStream fileIn = new FileInputStream(new File(child.getAbsolutePath())+".ser");
+				ObjectInputStream in = new ObjectInputStream(fileIn);
+				study = (localStudy) in.readObject();
+				in.close();
+				fileIn.close();
+				list.add(study);
+				
 			}
+			 catch (ClassNotFoundException e) {
+				
+				System.out.println("Bad things happend");
+				e.printStackTrace();
+			}
+			catch(IOException e){
+				study = new localStudy(child.getAbsolutePath());
+				list.add(study);				
+			}
+			 catch(Exception e){
+				e.printStackTrace();
+			}
+		
+		}
 
 }
 
