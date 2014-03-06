@@ -25,6 +25,7 @@ public class RunWorkstation extends Applet{
 	Study study;
 	File file=new File(System.getProperty("user.dir"));
 	ArrayList<Study> list;
+	Controller control;
 	
 	public void init() {
 		
@@ -53,6 +54,7 @@ public class RunWorkstation extends Applet{
 			}
 		
 		}
+		control=new Controller(list);
 
 }
 
