@@ -86,7 +86,7 @@ public class Iterator implements ImageIterator{
 
 	//override next4()
 	public int next4(){
-		if(hasNext4()){
+		if(has4Next()){
 			return position+4;
 		}
 		else{
@@ -106,7 +106,7 @@ public class Iterator implements ImageIterator{
 
 	//override previous4()
 	public int previous4(){
-		if(hasPrevious4()){
+		if(has4Previous()){
 			return position-4;
 		}
 		else{

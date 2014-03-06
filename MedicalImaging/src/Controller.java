@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 public class Controller {
 	
-	ArrayList<list> studyList;
+	ArrayList<Study> studyList;
 	
 	public Controller(ArrayList l){
 		this.studyList=l;

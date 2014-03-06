@@ -42,11 +42,11 @@ public class localStudy extends Observable implements Study {
 			Image image = new imageProxy(child.getAbsolutePath());
 			imageList.add(image);
 		}
-		int listMod=imageList.size()%4;
+		int listMod=imageList.size() % 4;
 		if(listMod!=0){
-			for(listMod; listMod!=4; listMod++){
+			for(listMod = imageList.size() % 4; listMod != 4; listMod++){
 				Image blank = new imageProxy("blank");
-				imageList.add(image);
+				imageList.add(blank);
 			}
 		}
 		iter= new Iterator(imageList, currentImage);

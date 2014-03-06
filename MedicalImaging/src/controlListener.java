@@ -69,7 +69,7 @@ public class controlListener implements ActionListener {
     	        }
  
     	        in.close();
-  q  	        out.close();
+              out.close();
     	        System.out.println("File copied from " + src + " to " + dest);
     	}
     }

@@ -1,7 +1,9 @@
 /*interface for the study classes
  * @author team3*/
- import java.util.Observable;
-public abstract class Study extends Observable {	
+import java.io.Serializable;
+
+public interface Study extends Serializable {	
+
 	final int min=1;
 	final int max=4;
 	
@@ -18,4 +20,5 @@ public abstract class Study extends Observable {
 	public void changeDisplay();
 
 	public void exitStudy();
+   
 }

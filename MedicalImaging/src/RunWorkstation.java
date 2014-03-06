@@ -3,7 +3,6 @@
 	@version 3/6/14
 */
 
-import java.applet.Applet;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
@@ -14,22 +13,22 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 
-public class RunWorkstation extends Applet{
-	/**
-	 * 
-	 */
+public class RunWorkstation {
+
 	//creates instance of Workstation class which will
 	//run the Workstation classes constructor
-	//which generates the GUI	
-	WorkStation station;
-	Study study;
-	File file=new File(System.getProperty("user.dir"));
-	ArrayList<Study> list;
-	Controller control;
+	//which generates the GUI
 	
-	public void init() {
+	public static void main(String [] args) {
 		
-		station=new WorkStation();
+   	Workstation station;
+   	localStudy study;
+   	File file = new File(System.getProperty("user.dir"));
+   	ArrayList<Study> list = new ArrayList<Study>();
+   	Controller control;
+      
+		station = new Workstation();
+      
 		for(File child: file.listFiles()){
 			try{
 				FileInputStream fileIn = new FileInputStream(new File(child.getAbsolutePath())+".ser");
@@ -57,6 +56,9 @@ public class RunWorkstation extends Applet{
 		
 		}
 		control=new Controller(list);
+      
+   }
+   
+
 
 }
-
