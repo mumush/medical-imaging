@@ -6,25 +6,43 @@
  * @author dsw3144
  *
  */
+
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-public class localStudy implements Study {
+import java.util.Observable;
+public class localStudy extends Observable implements Study {
 	
-	int displayState=1;
+	int displayState;
 	
-	boolean current= false;
+	int currentImage;	
 	
-	int currentImage= 0;	
+	String directory;
 	
-	List<Image> imageList= new ArrayList<Image>();
-
+	ImageIterator iter;
+	
+	ArrayList<Image> imageList= new ArrayList<Image>();
+	
+	public localStudy(String dirName){
+		directory=dirName;
+		displayState=min;
+		currentImage=0;
+	}
+	
 	/* (non-Javadoc)
 	 * @see Study#open()
 	 */
 	@Override
 	public void open() {
 		// TODO Auto-generated method stub
-
+		File dir= new File(directory);
+		for(File child : dir.listFiles()){
+			Image image = new imageProxy(child.getAbsolutePath());
+			imageList.add(image);
+		}
+		iter= new Iterator(imageList, currentImage);
+		setChanged();
+		notifyObservers();
 	}
 
 	/* (non-Javadoc)
@@ -33,7 +51,7 @@ public class localStudy implements Study {
 	@Override
 	public void save() {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	/* (non-Javadoc)
@@ -51,7 +69,14 @@ public class localStudy implements Study {
 	@Override
 	public void scrollForward() {
 		// TODO Auto-generated method stub
-
+		if(displayState==min){
+			currentImage=iter.next();
+		}
+		else{
+			currentImage=iter.next4();
+		}
+		setChanged();
+		notifyObservers();
 	}
 
 	/* (non-Javadoc)
@@ -60,6 +85,14 @@ public class localStudy implements Study {
 	@Override
 	public void scrollBack() {
 		// TODO Auto-generated method stub
+		if(displayState==min){
+			currentImage=iter.previous();
+		}
+		else{
+			currentImage=iter.previous4();
+		}
+		setChanged();
+		notifyObservers();
 
 	}
 
@@ -74,9 +107,11 @@ public class localStudy implements Study {
 		else{
 			displayState = min;
 		}
+		setChanged();
+		notifyObservers();
 
 	}
-
+	
 	/* (non-Javadoc)
 	 * @see Study#exitStudy()
 	 */
