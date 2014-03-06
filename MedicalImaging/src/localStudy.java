@@ -19,6 +19,8 @@ public class localStudy extends Observable implements Study {
 	
 	String directory;
 	
+	String blankImage;
+	
 	ImageIterator iter;
 	
 	ArrayList<Image> imageList= new ArrayList<Image>();
