@@ -42,6 +42,13 @@ public class localStudy extends Observable implements Study {
 			Image image = new imageProxy(child.getAbsolutePath());
 			imageList.add(image);
 		}
+		int listMod=imageList.size()%4;
+		if(listMod!=0){
+			for(listMod; listMod!=4; listMod++){
+				Image blank = new imageProxy("blank");
+				imageList.add(image);
+			}
+		}
 		iter= new Iterator(imageList, currentImage);
 		setChanged();
 		notifyObservers();
