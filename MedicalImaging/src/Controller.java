@@ -7,10 +7,19 @@
  */
 
 /**
- * @author John
+ * @author John/Doug
+ * 3-6-14
  *
  */
+import java.util.ArrayList;
+
 public class Controller {
+	
+	ArrayList<list> studyList;
+	
+	public Controller(ArrayList l){
+		this.studyList=l;
+	}
 
 	public void generateCommand(String comm, Study stud){
 		//commands are copy exit open save scrollBack scrollForward
