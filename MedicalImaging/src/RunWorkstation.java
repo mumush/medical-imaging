@@ -37,6 +37,7 @@ public class RunWorkstation extends Applet{
 				study = (localStudy) in.readObject();
 				in.close();
 				fileIn.close();
+				study.addObserver(station);
 				list.add(study);
 				
 			}
@@ -47,6 +48,7 @@ public class RunWorkstation extends Applet{
 			}
 			catch(IOException e){
 				study = new localStudy(child.getAbsolutePath());
+				study.addObserver(station);
 				list.add(study);				
 			}
 			 catch(Exception e){
