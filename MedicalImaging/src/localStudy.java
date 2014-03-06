@@ -58,9 +58,9 @@ public class localStudy extends Observable implements Study {
 	 * @see Study#copy()
 	 */
 	@Override
-	public void copy() {
+	public Study copy() {
 		// TODO Auto-generated method stub
-
+		return null;
 	}
 
 	/* (non-Javadoc)
