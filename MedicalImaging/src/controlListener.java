@@ -6,11 +6,23 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import java.io.*;
 
 public class controlListener implements ActionListener {
 
 	//public variable which references the gui class
 	Workstation workstationClass;
+   
+	//the directory in which this file is located
+	File studiesDir = new File("../studies");
+	
+	//the file chooser with the starting directory as the previous location
+	JFileChooser chooser = new JFileChooser(studiesDir);
+   
+   //chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+   
+    //chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+    //chooser.setAcceptAllFileFilterUsed(false);
 
 
 	public controlListener(Workstation _workstationClass) {
@@ -39,6 +51,20 @@ public class controlListener implements ActionListener {
 		}
       
       */
+      
+      if( ae.getSource() == workstationClass.openItem ) {
+      
+         int hasSelectedFile = chooser.showOpenDialog(workstationClass.jf);
+      
+         File inFile = chooser.getSelectedFile();
+         
+         File parentDir = inFile.getParentFile();
+         
+         String name = parentDir.getName();
+         
+         System.out.println(name);
+      
+      }
 		
 	
 	}

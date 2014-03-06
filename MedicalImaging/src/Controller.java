@@ -11,6 +11,7 @@
  *
  */
 public class Controller {
+
 	public void generateCommand(String comm, Study stud){
 		//commands are copy exit open save scrollBack scrollForward
 		Command command;

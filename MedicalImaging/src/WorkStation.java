@@ -141,6 +141,13 @@ public class Workstation {
       jf.add(rowTwo);
       
       
+		//******Register External Action Listeners
+		
+		controlListener ctrlListener = new controlListener(this);
+		
+		openItem.addActionListener(ctrlListener);
+      
+      
 		//******JFrame setup
 		
 		//set the title of the frame
@@ -154,7 +161,6 @@ public class Workstation {
 		
 		//set the frame to be visible
 		jf.setVisible(true);
-		
    
    }
 
