@@ -1,6 +1,6 @@
 /**
 *	@author Doug Weber
-	@version 3/3/14
+	@version 3/6/14
 */
 
 import java.applet.Applet;
@@ -41,7 +41,7 @@ public class RunWorkstation extends Applet{
 			}
 			 catch (ClassNotFoundException e) {
 				
-				System.out.println("Bad things happend");
+				System.out.println("Bad things happened");
 				e.printStackTrace();
 			}
 			catch(IOException e){
