@@ -60,6 +60,19 @@ public class localStudy extends Observable implements Study {
 	@Override
 	public void save() {
 		// TODO Auto-generated method stub
+		try
+		{
+         		FileOutputStream fileOut = new FileOutputStream(directory+".ser");
+         		ObjectOutputStream out = new ObjectOutputStream(fileOut);
+         		out.writeObject(self);
+         		out.close();
+        	 	fileOut.close();
+        	 	System.out.printf("Serialized data is saved in /tmp/employee.ser");
+		}
+		catch(IOException i)
+      		{
+          		i.printStackTrace();
+      		}
 		
 	}
 
