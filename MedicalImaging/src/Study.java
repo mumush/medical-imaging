@@ -9,7 +9,7 @@ public abstract class Study extends Observable {
 
 	public void save();
 
-	public void copy();
+	public Study copy();
 
 	public void scrollForward();
 
