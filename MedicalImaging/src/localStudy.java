@@ -39,13 +39,13 @@ public class localStudy extends Observable implements Study {
 		// TODO Auto-generated method stub
 		File dir= new File(directory);
 		for(File child : dir.listFiles()){
-			Image image = new imageProxy(child.getAbsolutePath());
+			Image image = new Image(child.getAbsolutePath());
 			imageList.add(image);
 		}
 		int listMod=imageList.size() % 4;
 		if(listMod!=0){
 			for(listMod = imageList.size() % 4; listMod != 4; listMod++){
-				Image blank = new imageProxy("blank");
+				Image blank = new Image("blank");
 				imageList.add(blank);
 			}
 		}
@@ -80,10 +80,60 @@ public class localStudy extends Observable implements Study {
 	 * @see Study#copy()
 	 */
 	@Override
-	public Study copy() {
+	public void copy(String fileDir) {
 		// TODO Auto-generated method stub
-		return null;
+		File src= new File(directory);
+		File dest= new File(fileDir);
+		try {
+			copyFolder(src,dest);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		notifyObservers(new localStudy(fileDir));
 	}
+	private static void copyFolder(File src, File dest)
+	throws IOException{
+
+	if(src.isDirectory()){
+
+		//if directory not exists, create it
+		if(!dest.exists()){
+		   dest.mkdir();
+		   System.out.println("Directory copied from " 
+                          + src + "  to " + dest);
+		}
+
+		//list all the directory contents
+		String files[] = src.list();
+
+		for (String file : files) {
+		   //construct the src and dest file structure
+		   File srcFile = new File(src, file);
+		   File destFile = new File(dest, file);
+		   //recursive copy
+		   copyFolder(srcFile,destFile);
+		}
+
+	}else{
+		//if file, then copy it
+		//Use bytes stream to support all file types
+		InputStream in = new FileInputStream(src);
+	        OutputStream out = new FileOutputStream(dest); 
+
+	        byte[] buffer = new byte[1024];
+
+	        int length;
+	        //copy the file content in bytes 
+	        while ((length = in.read(buffer)) > 0){
+	    	   out.write(buffer, 0, length);
+	        }
+
+	        in.close();
+          out.close();
+	        System.out.println("File copied from " + src + " to " + dest);
+	}
+}
 
 	/* (non-Javadoc)
 	 * @see Study#scrollForward()
@@ -130,7 +180,7 @@ public class localStudy extends Observable implements Study {
 			displayState = min;
 		}
 		setChanged();
-		notifyObservers();
+		notifyObservers(displayState);
 
 	}
 	
@@ -141,6 +191,12 @@ public class localStudy extends Observable implements Study {
 	public void exitStudy() {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public String getDirectory() {
+		// TODO Auto-generated method stub
+		return directory;
 	}
 
 }
