@@ -21,7 +21,7 @@ public class RunWorkstation {
 	
 	public static void main(String [] args) {
 		
-   	Workstation station;
+   	WorkStation station;
    	localStudy study;
    	File file = new File(System.getProperty("user.dir"));
    	ArrayList<Study> list = new ArrayList<Study>();
