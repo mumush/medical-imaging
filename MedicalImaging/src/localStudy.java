@@ -94,7 +94,7 @@ public class localStudy extends Observable implements Study {
 		}
 		iter= new Iterator(imageList, currentImage);
 		setChanged();
-		notifyObservers();
+		notifyObservers("open");
 	}
 
 	/* (non-Javadoc)
@@ -246,12 +246,6 @@ public class localStudy extends Observable implements Study {
 	public void exitStudy() {
 		// TODO Auto-generated method stub
 
-	}
-
-	@Override
-	public String getDirectory() {
-		// TODO Auto-generated method stub
-		return directory;
 	}
 
 }
