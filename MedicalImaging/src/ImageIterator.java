@@ -4,6 +4,7 @@
 
 //import for image class
 import java.awt.*;
+import java.util.ArrayList;
 public interface ImageIterator{
 
 	//checks to see if imagelist has more images
