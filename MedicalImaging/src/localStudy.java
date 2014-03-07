@@ -31,6 +31,49 @@ public class localStudy extends Observable implements Study {
 		currentImage=0;
 	}
 	
+	/*getters for the class*/
+	
+	public int getDisplayState(){
+		return this.displayState;
+	}
+	
+	public int getCurrentImage(){
+		return this.currentImage;
+	}
+	
+	public String getDirectory(){
+		return this.directory;
+	}
+	
+	public ImageIterator getIterator(){
+		return this.iter;
+	}
+	
+	public ArrayList<Image> getImageList(){
+		return this.imageList;
+	}
+	
+	/*setters for the class*/
+	public void setDisplayState(int i){
+		this.displayState=i;
+	}
+	
+	public void setCurrentImage(int i){
+		this.currentImage=i;
+	}
+	
+	public void setDirectory(String s){
+		this.directory=s;
+	}
+	
+	public void setIterator(ImageIterator i){
+		this.iter=i;
+	}
+	
+	public void setImageList(ArrayList<Image> i){
+		this.imageList=i;
+	}
+	
 	/* (non-Javadoc)
 	 * @see Study#open()
 	 */
