@@ -11,7 +11,7 @@ import java.io.*;
 public class controlListener implements ActionListener {
 
 	//public variable which references the gui class
-	Workstation workstationClass;
+	WorkStation workstationClass;
    
 	//the directory in which this file is located
 	File studiesDir = new File("../studies");
@@ -25,7 +25,7 @@ public class controlListener implements ActionListener {
     //chooser.setAcceptAllFileFilterUsed(false);
 
 
-	public controlListener(Workstation _workstationClass) {
+	public controlListener(WorkStation _workstationClass) {
 	
 		workstationClass = _workstationClass;
 	

@@ -81,58 +81,70 @@ public class localStudy extends Observable implements Study {
 	 */
 	@Override
 	public void copy(String fileDir) {
-		// TODO Auto-generated method stub
-		File src= new File(directory);
-		File dest= new File(fileDir);
+		
+		File source = new File(directory);
+		File dest = new File(fileDir);
+      
 		try {
-			copyFolder(src,dest);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
+		   copyFolder(source, dest);
+		} 
+      catch (IOException e) {
 			e.printStackTrace();
 		}
+      
 		notifyObservers(new localStudy(fileDir));
 	}
-	private static void copyFolder(File src, File dest)
-	throws IOException{
+   
+	private static void copyFolder(File source, File dest) throws IOException {
 
-	if(src.isDirectory()){
+	if( source.isDirectory() ){
 
-		//if directory not exists, create it
-		if(!dest.exists()){
+		//if the directory doesn't exist, create one
+		if( !dest.exists() ) {
+      
 		   dest.mkdir();
-		   System.out.println("Directory copied from " 
-                          + src + "  to " + dest);
+		   System.out.println("Directory copied!");
+         
 		}
 
-		//list all the directory contents
-		String files[] = src.list();
+		String filesArray[] = source.list();
 
-		for (String file : files) {
-		   //construct the src and dest file structure
-		   File srcFile = new File(src, file);
+      //for each file in the array of all files in the source dir
+		for (String file : filesArray) {
+
+		   File sourceFile = new File(source, file);
 		   File destFile = new File(dest, file);
-		   //recursive copy
-		   copyFolder(srcFile,destFile);
+         
+		   //recursive copy call
+		   copyFolder(sourceFile, destFile);
 		}
 
-	}else{
-		//if file, then copy it
-		//Use bytes stream to support all file types
-		InputStream in = new FileInputStream(src);
-	        OutputStream out = new FileOutputStream(dest); 
-
-	        byte[] buffer = new byte[1024];
-
-	        int length;
-	        //copy the file content in bytes 
-	        while ((length = in.read(buffer)) > 0){
-	    	   out.write(buffer, 0, length);
-	        }
-
-	        in.close();
-          out.close();
-	        System.out.println("File copied from " + src + " to " + dest);
 	}
+   
+   else { //if there's a file, copy it
+   
+      //create input and output streams
+      InputStream inputStream = new FileInputStream(source);
+      OutputStream outputStream = new FileOutputStream(dest); 
+      
+      //initialize byte buffer
+      byte[] buffer = new byte[1024];
+      
+      int length;
+      
+      //copy file in bytes
+      while ((length = inputStream.read(buffer)) > 0) {
+      
+         outputStream.write(buffer, 0, length);
+         
+      }
+      
+      //close streams and output info to system.out
+      inputStream.close();
+      outputStream.close();
+      System.out.println("File copied!");
+   }
+   
 }
 
 	/* (non-Javadoc)

@@ -21,13 +21,13 @@ public class RunWorkstation {
 	
 	public static void main(String [] args) {
 		
-   	Workstation station;
+   	WorkStation station;
    	localStudy study;
    	File file = new File(System.getProperty("user.dir"));
    	ArrayList<Study> list = new ArrayList<Study>();
    	Controller control;
       
-		station = new Workstation();
+		station = new WorkStation();
       
 		for(File child: file.listFiles()){
 			try{
