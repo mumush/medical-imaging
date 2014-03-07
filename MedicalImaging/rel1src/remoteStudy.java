@@ -6,6 +6,7 @@
  * @author dsw3144
  *
  */
+  /************************************does absolutely nothing at this point for r1*******************************/
 public class remoteStudy implements Study {
 
 	int displayState=1;
