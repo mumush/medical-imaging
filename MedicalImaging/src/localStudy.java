@@ -212,8 +212,8 @@ public class localStudy extends Observable implements Study {
 	@Override
 	public void scrollBack() {
 		// TODO Auto-generated method stub
-		if(displayState==min){
-			currentImage=iter.previous();
+		if(displayState == min){
+			currentImage = iter.previous();
 		}
 		else{
 			currentImage=iter.previous4();
@@ -235,7 +235,7 @@ public class localStudy extends Observable implements Study {
 			displayState = min;
 		}
 		setChanged();
-		notifyObservers(displayState);
+		notifyObservers("display");
 
 	}
 	
