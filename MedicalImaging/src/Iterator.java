@@ -5,6 +5,7 @@
 //import library's for arrayList and Image
 import java.util.ArrayList;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 public class Iterator implements ImageIterator{
 
@@ -87,7 +88,8 @@ public class Iterator implements ImageIterator{
 	//override next4()
 	public int next4(){
 		if(has4Next()){
-			return position+4;
+			position=position+4;
+			return position;
 		}
 		else{
 			return position;
@@ -97,7 +99,7 @@ public class Iterator implements ImageIterator{
 	//override previous()
 	public int previous(){
 		if(hasPrevious()){
-			return position-1;
+			return (position--);
 		}
 		else{
 			return position;	
@@ -107,13 +109,13 @@ public class Iterator implements ImageIterator{
 	//override previous4()
 	public int previous4(){
 		if(has4Previous()){
-			return position-4;
+			position=position-4;
+			return position;
 		}
 		else{
 			return position;	
 		}
 	}
-	
 	//getters and setters//
 	public int getPosition() {
 		
