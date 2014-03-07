@@ -11,10 +11,10 @@ import java.io.*;
 public class controlListener implements ActionListener {
 
 	//public variable which references the gui class
-	WorkStation workstationClass;
+	Workstation workstationClass;
    
 	//the directory in which this file is located
-	File studiesDir = new File("../studies");
+	File studiesDir = new File(System.getProperty("user.dir")+"\\studies");
 	
 	//the file chooser with the starting directory as the previous location
 	JFileChooser chooser = new JFileChooser(studiesDir);
@@ -25,7 +25,7 @@ public class controlListener implements ActionListener {
     //chooser.setAcceptAllFileFilterUsed(false);
 
 
-	public controlListener(WorkStation _workstationClass) {
+	public controlListener(Workstation _workstationClass) {
 	
 		workstationClass = _workstationClass;
 	
@@ -85,6 +85,7 @@ public class controlListener implements ActionListener {
    */
 	public void actionPerformed(ActionEvent ae) {
 		
+		String studyDir;
       
       if( ae.getSource() == workstationClass.openItem ) {
       
@@ -94,14 +95,59 @@ public class controlListener implements ActionListener {
          
          File parentDir = inFile.getParentFile();
          
-         String studyName = parentDir.getName();
+         studyDir = System.getProperty("user.dir") + "\\studies\\" + parentDir.getName();
          
-         System.out.println(studyName);
+         System.out.println(studyDir);
          
-         //generateCommand("open", studyName);
-         
-         //take the study name, create instance of that study, and based on the
+         //generate command
+         workstationClass.control.generateCommand("open", studyDir );
       
+      }
+      
+      if( ae.getSource() == workstationClass.forwardButton ) {
+    	  
+    	  File inFile = chooser.getSelectedFile();
+    	  
+    	  studyDir = System.getProperty("user.dir") + "\\studies\\" + inFile.getParentFile().getName();
+    	  
+    	  System.out.println(studyDir);
+    	  
+          //generate command
+          workstationClass.control.generateCommand("scrollForward", studyDir );
+    	  
+      }
+      if(ae.getSource()== workstationClass.exitItem){
+    	  System.exit(0);
+      }
+      
+      if( ae.getActionCommand() == "Single Image View" ) {
+    	  
+    	  File inFile = chooser.getSelectedFile();
+    	  
+    	  studyDir = System.getProperty("user.dir") + "\\studies\\" + inFile.getParentFile().getName();
+    	  
+    	  System.out.println(studyDir);
+    	  
+          //generate command
+          workstationClass.control.generateCommand("changeDisplay", studyDir );
+    	  
+    	  System.out.println("Hello");
+    	  
+    	  
+    	  
+      }
+      
+      if( ae.getSource() == workstationClass.previousButton ) {
+    	  
+    	  File inFile = chooser.getSelectedFile();
+    	  
+    	  studyDir = System.getProperty("user.dir") + "\\studies\\" + inFile.getParentFile().getName();
+    	  
+    	  System.out.println(studyDir);
+    	  
+          //generate command
+          workstationClass.control.generateCommand("scrollBack", studyDir );
+    	  
       }
       
 		if( ae.getSource() == workstationClass.copyItem ) {
