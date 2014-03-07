@@ -29,5 +29,14 @@ public interface ImageIterator{
 
 	//goes to previous 4 images
 	public int previous4();
+	
+	//getters and setters//
+	public int getPosition();
+	
+	public void setPosition(int i);
+	
+	public void setImageList(ArrayList<Image> i);
+	
+	public ArrayList<Image> getImageList();
 
 }
