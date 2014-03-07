@@ -39,13 +39,13 @@ public class localStudy extends Observable implements Study {
 		// TODO Auto-generated method stub
 		File dir= new File(directory);
 		for(File child : dir.listFiles()){
-			Image image = new Image(child.getAbsolutePath());
+			Image image = new imageProxy(child.getAbsolutePath());
 			imageList.add(image);
 		}
 		int listMod=imageList.size() % 4;
 		if(listMod!=0){
 			for(listMod = imageList.size() % 4; listMod != 4; listMod++){
-				Image blank = new Image("blank");
+				Image blank = new imageProxy("blank");
 				imageList.add(blank);
 			}
 		}
@@ -160,7 +160,7 @@ public class localStudy extends Observable implements Study {
 			currentImage=iter.next4();
 		}
 		setChanged();
-		notifyObservers();
+		notifyObservers("next image");
 	}
 
 	/* (non-Javadoc)
@@ -176,7 +176,7 @@ public class localStudy extends Observable implements Study {
 			currentImage=iter.previous4();
 		}
 		setChanged();
-		notifyObservers();
+		notifyObservers("previous image");
 
 	}
 
