@@ -25,5 +25,9 @@ public class concreteImage implements Image {
 		
 	}
 	
+	public String getAddress(){
+		return this.add;
+	}
+	
 
 }
