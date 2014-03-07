@@ -11,7 +11,7 @@ public interface Study extends Serializable {
 
 	public void save();
 
-	public Study copy();
+	public void copy( String fileDir);
 
 	public void scrollForward();
 
@@ -20,5 +20,7 @@ public interface Study extends Serializable {
 	public void changeDisplay();
 
 	public void exitStudy();
+
+	public String getDirectory();
    
 }
