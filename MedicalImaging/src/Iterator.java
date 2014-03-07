@@ -113,4 +113,25 @@ public class Iterator implements ImageIterator{
 			return position;	
 		}
 	}
+	
+	//getters and setters//
+	public int getPosition() {
+		
+		return this.position;
+	}
+
+	public void setPosition(int i) {
+		this.position=i;
+		
+	}
+
+	public void setImageList(ArrayList<Image> i) {
+		this.images=i;
+		
+	}
+
+	public ArrayList<Image> getImageList() {
+		
+		return this.images;
+	}
 }
