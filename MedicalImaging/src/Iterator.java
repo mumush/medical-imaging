@@ -15,7 +15,7 @@ public class Iterator implements ImageIterator{
 	private int position;
 
 	/* constructor takes in the image list from study and the current
-	position attribut and uses them to build the iterator*/
+	position attribute and uses them to build the iterator*/
 	public Iterator(ArrayList<Image> list,int current){
 		this.images=list;
 		this.position=current;
