@@ -22,10 +22,13 @@ public class Controller{
 	public Controller(ArrayList l){
 		this.studyList=l;
 	}
-
+	public void addStudy(Study study){
+		studyList.add(study);
+	}
+	
 	public void generateCommand(String comm, String dir){
 		//commands are copy exit open save scrollBack scrollForward
-		Study stud=null;		
+		Study stud = null;		
 		for(int i=0; i<studyList.size();i++){
 			if(studyList.get(i).getDirectory().equals(dir)){
 				stud=studyList.get(i);
@@ -46,6 +49,9 @@ public class Controller{
 		}
 		else if(comm.equals("scrollBack")){
 			command= new scrollBackStudyCommand(stud);
+		}
+		else if(comm.equals("changeDisplay")){
+			command= new changeDisplayStudyCommand(stud);
 		}
 		else{
 			command= new scrollForwardStudyCommand(stud);
