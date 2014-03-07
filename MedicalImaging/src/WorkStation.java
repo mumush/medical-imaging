@@ -9,7 +9,7 @@ import javax.swing.*;
 import java.util.Observable;
 import java.util.Observer;
 
-public class WorkStation implements Observer {
+public class Workstation implements Observer {
 
    public void update(Observable obs, Object obj) {};
 
@@ -27,10 +27,10 @@ public class WorkStation implements Observer {
    JRadioButton fourView;
    
    ButtonGroup viewButtonGroup;
-   
+   Controller control;
 
-   public WorkStation() {
-   
+   public Workstation(Controller ctrl) {
+	   control= ctrl;
 		//create new JFrame
 		jf = new JFrame();
 		
