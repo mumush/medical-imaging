@@ -21,13 +21,13 @@ public class RunWorkstation {
 	
 	public static void main(String [] args) {
 		
-   	WorkStation station;
+   	Workstation station;
    	localStudy study;
    	File file = new File(System.getProperty("user.dir"));
    	ArrayList<Study> list = new ArrayList<Study>();
-   	Controller control;
+   	Controller control= new Controller(list);
       
-		station = new WorkStation();
+		station = new Workstation(control);
       
 		for(File child: file.listFiles()){
 			try{
@@ -37,7 +37,7 @@ public class RunWorkstation {
 				in.close();
 				fileIn.close();
 				study.addObserver(station);
-				list.add(study);
+				station.control.addStudy(study);
 				
 			}
 			 catch (ClassNotFoundException e) {
@@ -54,9 +54,7 @@ public class RunWorkstation {
 				e.printStackTrace();
 			}
 		
-		}
-		control=new Controller(list);
-      
+		}      
    }
    
 
