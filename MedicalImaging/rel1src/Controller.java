@@ -19,13 +19,18 @@ public class Controller{
 	
 	ArrayList<Study> studyList;
 	
+	//constructor
 	public Controller(ArrayList l){
 		this.studyList=l;
 	}
+	
+	//adds study to the list
 	public void addStudy(Study study){
 		studyList.add(study);
 	}
 	
+	
+	//genterates a command object and executes it
 	public void generateCommand(String comm, String dir){
 		//commands are copy exit open save scrollBack scrollForward
 		Study stud = null;		
