@@ -13,33 +13,35 @@ import java.util.Observer;
 
 public class Workstation implements Observer {
 	
-	   JFrame jf;
-	   JMenuItem openItem;
-	   JMenuItem copyItem;
-	   JMenuItem saveItem;
-	   JMenuItem exitItem;
-	   JMenuItem optionsItem;
+	//declare components//			
+	JFrame jf;
+	JMenuItem openItem;
+	JMenuItem copyItem;
+	JMenuItem saveItem;
+	JMenuItem exitItem;
+	JMenuItem optionsItem;
 	   
-	   JButton previousButton;
-	   JButton forwardButton;
+	JButton previousButton;
+	JButton forwardButton;
 	   
-	   JLabel label;
-	   JLabel label2;
-	   JLabel label3;
-	   JLabel label4;
+	JLabel label;
+	JLabel label2;
+	JLabel label3;
+	JLabel label4;
 	   
-	   JRadioButton oneView;
-	   JRadioButton fourView;
+	JRadioButton oneView;
+	JRadioButton fourView;
 	   
-	   ButtonGroup viewButtonGroup;
-	   Controller control;
+	ButtonGroup viewButtonGroup;
+	Controller control;
 
+	//override update from Observer
    public void update(Observable obs, Object obj) {
 	   
 	localStudy study = (localStudy) obs;
-	   
+	//if open was pushed
 	if( obj.equals("open") ) {
-		
+		//checks current display state and generates accordingly//
 		if(study.getDisplayState() == 1 ){
 		String imgPath = study.getImageList().get(study.getCurrentImage()).getAddress();
 			
@@ -77,12 +79,12 @@ public class Workstation implements Observer {
 		}
 		
 	}
-		
+	//if next image was pushed
 	if( obj.equals("next image") ) {
 		String imgPath = study.getImageList().get(study.getCurrentImage()).getAddress();
 			
 		System.out.println( study.getImageList().get(study.getCurrentImage()).getAddress());
-		
+		//checks current display state and generates accordingly//
 		if(study.getDisplayState()==1){
 			
 			ImageIcon img = new ImageIcon(imgPath);
@@ -118,8 +120,9 @@ public class Workstation implements Observer {
 			
 	}
 	
+	//if current display state was changed
 	if( obj.equals("display") ) {
-			
+		//checks current display state and generates accordingly//	
 		if(study.getDisplayState() == 1) {
 				
 			String imgPath = study.getImageList().get(study.getCurrentImage()).getAddress();
@@ -160,8 +163,9 @@ public class Workstation implements Observer {
 		jf.pack();
 			
 	}
-		
+	//if previous image button was pushed//
 	if( obj.equals("previous image") ) {
+		//checks current display state and generates accordingly//
 		if(study.getDisplayState()==1){
 			String imgPath = study.getImageList().get(study.getCurrentImage()).getAddress();
 		
