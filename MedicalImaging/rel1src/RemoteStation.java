@@ -12,6 +12,8 @@ import java.util.Observable;
  * @author John
  *
  */
+ 
+ /************************************does absolutely nothing at this point for r1*******************************/
 public class RemoteStation implements UI {
 
 	/* (non-Javadoc)
