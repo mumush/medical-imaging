@@ -1,3 +1,5 @@
+//Interface for the UI//
+
 import java.util.Observable;
 import java.util.Observer;
 
