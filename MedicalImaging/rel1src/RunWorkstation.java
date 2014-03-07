@@ -15,9 +15,9 @@ import javax.swing.*;
 
 public class RunWorkstation {
 
-	//creates instance of Workstation class which will
-	//run the Workstation classes constructor
-	//which generates the GUI
+	/*creates instance of Workstation class which will
+	*run the Workstation classes constructor
+	*and generates the GUI*/
 	
 	public static void main(String [] args) {
 		
@@ -29,6 +29,7 @@ public class RunWorkstation {
       
 		station = new Workstation(control);
       
+      		//loop thought the file and create a list of studys based on saved .ser file//
 		for(File child: file.listFiles()){
 			try{
 				FileInputStream fileIn = new FileInputStream(new File(child.getAbsolutePath())+".ser");
