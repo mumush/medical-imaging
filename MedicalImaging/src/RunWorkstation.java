@@ -21,9 +21,9 @@ public class RunWorkstation {
 	
 	public static void main(String [] args) {
 		
-   	WorkStation station;
+   	Workstation station;
    	localStudy study;
-   	File file = new File(System.getProperty("user.dir"));
+   	File file = new File(System.getProperty("user.dir") + "\\studies");
    	ArrayList<Study> list = new ArrayList<Study>();
    	Controller control= new Controller(list);
       
@@ -46,6 +46,8 @@ public class RunWorkstation {
 				e.printStackTrace();
 			}
 			catch(IOException e){
+				
+				System.out.println(child.getAbsolutePath());
 				study = new localStudy(child.getAbsolutePath());
 				study.addObserver(station);
 				list.add(study);				
