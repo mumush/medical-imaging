@@ -11,9 +11,11 @@
  * 3-6-14
  *
  */
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class Controller {
+public class Controller{
 	
 	ArrayList<Study> studyList;
 	
@@ -21,8 +23,14 @@ public class Controller {
 		this.studyList=l;
 	}
 
-	public void generateCommand(String comm, Study stud){
+	public void generateCommand(String comm, String dir){
 		//commands are copy exit open save scrollBack scrollForward
+		Study stud=null;		
+		for(int i=0; i<studyList.size();i++){
+			if(studyList.get(i).getDirectory().equals(dir)){
+				stud=studyList.get(i);
+			}
+		}		
 		Command command;
 		if(comm.equals("copy")){
 			command= new copyStudyCommand(stud);
