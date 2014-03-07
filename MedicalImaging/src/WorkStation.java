@@ -6,30 +6,181 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+
+import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
-public class WorkStation implements Observer {
+public class Workstation implements Observer {
+	
+	   JFrame jf;
+	   JMenuItem openItem;
+	   JMenuItem copyItem;
+	   JMenuItem saveItem;
+	   JMenuItem exitItem;
+	   JMenuItem optionsItem;
+	   
+	   JButton previousButton;
+	   JButton forwardButton;
+	   
+	   JLabel label;
+	   JLabel label2;
+	   JLabel label3;
+	   JLabel label4;
+	   
+	   JRadioButton oneView;
+	   JRadioButton fourView;
+	   
+	   ButtonGroup viewButtonGroup;
+	   Controller control;
 
-   public void update(Observable obs, Object obj) {};
+   public void update(Observable obs, Object obj) {
+	   
+	   localStudy study = (localStudy) obs;
+	   
+		if( obj.equals("open") ) {
+			if(study.getDisplayState()==1){
+			String imgPath = study.getImageList().get(study.getCurrentImage()).getAddress();
+			
+			System.out.println( study.getImageList().get(study.getCurrentImage()).getAddress());
+			
+			ImageIcon img = new ImageIcon(imgPath);
+			
+			label.setIcon(img);
+			}
+			else{
+				ImageIcon img = new ImageIcon(study.getImageList().get(study.getCurrentImage()).getAddress());
+				ArrayList<ImageIcon> imgs=new ArrayList<ImageIcon>();
+				imgs.add(img);
+				for(int i=1;i<4;i++){
+					if(study.getImageList().get(study.getCurrentImage()+i).getAddress().equals("blank")){
+						ImageIcon newImg = new ImageIcon();
+						imgs.add(newImg);
+					}
+					else{
+						ImageIcon newImg = new ImageIcon(study.getImageList().get(study.getCurrentImage()+i).getAddress());
+						imgs.add(newImg);
+					}
+				}
+				
+				label.setIcon(imgs.get(0));
+				label2.setIcon(imgs.get(1));
+				label3.setIcon(imgs.get(2));
+				label4.setIcon(imgs.get(3));
+			}
+			
+		}
+		
+		if( obj.equals("next image") ) {
+			String imgPath = study.getImageList().get(study.getCurrentImage()).getAddress();
+			
+			System.out.println( study.getImageList().get(study.getCurrentImage()).getAddress());
+			if(study.getDisplayState()==1){
+				
+				ImageIcon img = new ImageIcon(imgPath);
+			
+				label.setIcon(img);
+			}
+			else{
+				ImageIcon img = new ImageIcon(study.getImageList().get(study.getCurrentImage()).getAddress());
+				ArrayList<ImageIcon> imgs=new ArrayList<ImageIcon>();
+				imgs.add(img);
+				for(int i=1;i<4;i++){
+					if(study.getImageList().get(study.getCurrentImage()+i).getAddress().equals("blank")){
+						ImageIcon newImg = new ImageIcon();
+						imgs.add(newImg);
+					}
+					else{
+						ImageIcon newImg = new ImageIcon(study.getImageList().get(study.getCurrentImage()+i).getAddress());
+						imgs.add(newImg);
+					}
+				}
+				
+				label.setIcon(imgs.get(0));
+				label2.setIcon(imgs.get(1));
+				label3.setIcon(imgs.get(2));
+				label4.setIcon(imgs.get(3));
+			}
+			
+		}
+		
+		if( obj.equals("display") ) {
+			
+			if(study.getDisplayState()==1){
+				String imgPath = study.getImageList().get(study.getCurrentImage()).getAddress();
+				
+				System.out.println( study.getImageList().get(study.getCurrentImage()).getAddress());
+				
+				ImageIcon img = new ImageIcon(imgPath);
+				
+				label.setIcon(img);
+				}
+				else{
+					ImageIcon img = new ImageIcon(study.getImageList().get(study.getCurrentImage()).getAddress());
+					ArrayList<ImageIcon> imgs=new ArrayList<ImageIcon>();
+					imgs.add(img);
+					for(int i=1;i<4;i++){
+						if(study.getImageList().get(study.getCurrentImage()+i).getAddress().equals("blank")){
+							ImageIcon newImg = new ImageIcon();
+							imgs.add(newImg);
+						}
+						else{
+							ImageIcon newImg = new ImageIcon(study.getImageList().get(study.getCurrentImage()+i).getAddress());
+							imgs.add(newImg);
+						}
+					}
+					
+					label.setIcon(imgs.get(0));
+					label2.setIcon(imgs.get(1));
+					label3.setIcon(imgs.get(2));
+					label4.setIcon(imgs.get(3));
+				}
+			
+		}
+		
+		if( obj.equals("previous image") ) {
+			if(study.getDisplayState()==1){
+				String imgPath = study.getImageList().get(study.getCurrentImage()).getAddress();
+			
+				System.out.println( study.getImageList().get(study.getCurrentImage()).getAddress());
+			
+				ImageIcon img = new ImageIcon(imgPath);
+			
+				label.setIcon(img);
+			}
+			else{
+				ImageIcon img = new ImageIcon(study.getImageList().get(study.getCurrentImage()).getAddress());
+				ArrayList<ImageIcon> imgs=new ArrayList<ImageIcon>();
+				imgs.add(img);
+				for(int i=1;i<4;i++){
+					if(study.getImageList().get(study.getCurrentImage()+i).getAddress().equals("blank")){
+						ImageIcon newImg = new ImageIcon();
+						imgs.add(newImg);
+					}
+					else{
+						ImageIcon newImg = new ImageIcon(study.getImageList().get(study.getCurrentImage()+i).getAddress());
+						imgs.add(newImg);
+					}
+				}
+				
+				label.setIcon(imgs.get(0));
+				label2.setIcon(imgs.get(1));
+				label3.setIcon(imgs.get(2));
+				label4.setIcon(imgs.get(3));
+				
+			}
+			
+		}
+		
+		//udpate GUI
+		jf.repaint();
+		jf.revalidate();
+	   
+   }
 
-	JFrame jf;
-   JMenuItem openItem;
-   JMenuItem copyItem;
-   JMenuItem saveItem;
-   JMenuItem exitItem;
-   JMenuItem optionsItem;
-   
-   JButton previousButton;
-   JButton forwardButton;
-   
-   JRadioButton oneView;
-   JRadioButton fourView;
-   
-   ButtonGroup viewButtonGroup;
-   Controller control;
 
-   public WorkStation(Controller ctrl) {
+
+   public Workstation(Controller ctrl) {
 	   control= ctrl;
 		//create new JFrame
 		jf = new JFrame();
@@ -95,27 +246,33 @@ public class WorkStation implements Observer {
       
       //create new image and image label
       ImageIcon image = new ImageIcon("../studies/axial_head_mri/head01.jpg");
-      JLabel label = new JLabel("", image, JLabel.CENTER);
+      label = new JLabel("", image, JLabel.CENTER);
       
       rowOne.add(label);
       
       //create new image and image label
       ImageIcon image1 = new ImageIcon("../studies/axial_head_mri/head01.jpg");
-      JLabel label1 = new JLabel("", image1, JLabel.CENTER);
+      label = new JLabel("", image1, JLabel.CENTER);
       
-      rowOne.add(label1);
+      rowOne.add(label);
       
       //create new image and image label
       ImageIcon image2 = new ImageIcon("../studies/axial_head_mri/head01.jpg");
-      JLabel label2 = new JLabel("", image2, JLabel.CENTER);
+      label2 = new JLabel("", image2, JLabel.CENTER);
       
       rowOne.add(label2);
       
       //create new image and image label
       ImageIcon image3 = new ImageIcon("../studies/axial_head_mri/head01.jpg");
-      JLabel label3 = new JLabel("", image3, JLabel.CENTER);
+      label3 = new JLabel("", image3, JLabel.CENTER);
       
       rowOne.add(label3);
+      
+      //create new image and image label
+      ImageIcon image4 = new ImageIcon("../studies/axial_head_mri/head01.jpg");
+      label4 = new JLabel("", image4, JLabel.CENTER);
+      
+      rowOne.add(label4);
       
       
       //add row to JFrame
@@ -151,6 +308,13 @@ public class WorkStation implements Observer {
       copyItem.addActionListener(ctrlListener);
       saveItem.addActionListener(ctrlListener);
       optionsItem.addActionListener(ctrlListener);
+      exitItem.addActionListener(ctrlListener);
+      
+      previousButton.addActionListener(ctrlListener);
+      forwardButton.addActionListener(ctrlListener);
+      
+      oneView.addActionListener(ctrlListener);
+      fourView.addActionListener(ctrlListener);
       
       
 		//******JFrame setup
