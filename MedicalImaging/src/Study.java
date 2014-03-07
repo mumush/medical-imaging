@@ -9,6 +9,8 @@ public interface Study extends Serializable {
 	final int max=4;
 	
 	public void open();
+	
+	//setter stubs//
 
 	public void setDisplayState(int i);
 	
@@ -19,6 +21,8 @@ public interface Study extends Serializable {
 	public void setImageList(ArrayList<Image> i);
 	
 	public void setDirectory(String s);
+	
+	//getter stubs//
 	
 	public int getDisplayState();
 	
@@ -41,5 +45,6 @@ public interface Study extends Serializable {
 	public void changeDisplay();
 
 	public void exitStudy();
+	
    
 }
